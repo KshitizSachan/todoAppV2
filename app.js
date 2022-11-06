@@ -12,25 +12,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-
-
-
-app.use( function(req, res, next) { // Ignore favicon.ico requests.
-
-  if (req.originalUrl && req.originalUrl.split("/").pop() === 'favicon.ico') {
-
-     return res.sendStatus(204);
-
-  }
-
-  return next();
-
-});
-
-
-
-
-
 mongoose.connect("mongodb+srv://kshitiz:testing1234@cluster0.oygllf6.mongodb.net/todolistDB");
 
 const itemsSchema = {
@@ -155,16 +136,11 @@ app.get("/about", function(req, res){
 });
 
 
-
-
-
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }
- 
-app.listen(port, function() {
-  console.log("Server started succesfully");
-});    
 
-
+app.listen(3000, function() {
+  console.log("Server started on port 3000");
+});
